@@ -1,4 +1,6 @@
 #!/bin/bash
 
-cd /app
+echo "Using build dir of $1"
+cd $1
 python manage.py collectstatic --noinput
+echo "done"
