@@ -1,6 +1,17 @@
 #!/bin/bash
 
 echo "Using build dir of $1"
+# get environment
+ENV_DIR=$3
+if [ -d ${ENV_DIR} ];
+then
+  for key in $(ls ${ENV_DIR}); do
+    case ${key} in
+      PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH) ;;
+      *) export "${key}=$(< ${ENV_DIR}/${key})" ;;
+    esac
+  done
+fi
 cd $1
 python manage.py collectstatic --noinput
 echo "done"
