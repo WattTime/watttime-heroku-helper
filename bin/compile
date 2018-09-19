@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Using build dir of $1"
+echo "Starting django tidy up"
 # get environment
 ENV_DIR=$3
 if [ -d ${ENV_DIR} ];
